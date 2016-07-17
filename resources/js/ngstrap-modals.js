@@ -7,8 +7,8 @@ angular.module("ngstrapModals", ["mgcrea.ngStrap", "ngSanitize"])
 
       var defaults = {
         title: "Alert",
-        heading: "Test",
-        subheading: "Please click on Ok to dismiss",
+        heading: "",
+        description: "Please click on Ok to dismiss",
         okButtonText: "Ok"
       };
 
@@ -29,7 +29,7 @@ angular.module("ngstrapModals", ["mgcrea.ngStrap", "ngSanitize"])
       var defaults = {
         title: "Prompt",
         heading: "Please provide a value",
-        subheading: "",
+        description: "",
         okButtonText: "Ok",
         cancelButtonText: "Cancel",
         placeholder: "",
@@ -47,8 +47,8 @@ angular.module("ngstrapModals", ["mgcrea.ngStrap", "ngSanitize"])
       var prompt = $modal({
         templateUrl: "prompt.html",
         scope: scope,
-        show: true
-        // backdrop: "static"
+        show: true,
+        backdrop: "static"
       });
 
       return deferred.promise;
@@ -61,7 +61,7 @@ angular.module("ngstrapModals", ["mgcrea.ngStrap", "ngSanitize"])
       var defaults = {
         title: "Confirmation",
         heading: "Are you sure?",
-        subheading: "",
+        description: "",
         okButtonText: "Yes",
         cancelButtonText: "No"
       };
@@ -76,8 +76,8 @@ angular.module("ngstrapModals", ["mgcrea.ngStrap", "ngSanitize"])
       var confirm = $modal({
         templateUrl: "confirm.html",
         scope: scope,
-        show: true
-        // backdrop: "static"
+        show: true,
+        backdrop: "static"
       });
 
       return deferred.promise;
