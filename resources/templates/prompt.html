@@ -13,9 +13,9 @@
           <div class="form-group"
                ng-class="{ 'has-error' : promptDialogForm.promptInput.$invalid && promptDialogForm.promptInput.$dirty }">
             <input type="text" class="form-control" required placeholder="{{options.placeholder}}" name="promptInput"
-                   id="promptInput" ng-required="true" ng-model="promptInput" focus-if>
+                   id="promptInput" ng-required="true" ng-model="promptInput">
             <div class="help-block" ng-messages="promptDialogForm.promptInput.$error"
-                 ng-if="promptDialogForm.promptInput.$dirty">
+                 ng-if="promptDialogForm.promptInput.$dirty && promptDialogForm.promptInput.$invalid">
               <p ng-message="required">This is required.</p>
             </div>
           </div>
