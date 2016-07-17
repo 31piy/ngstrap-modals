@@ -14,7 +14,7 @@
 
   <h1>ngstrap-modals</h1>
   <p>An angular service to generate common modal dialogs using
-    <a href="http://mgcrea.github.io/angular-strap" target="_blank">Angular Strap.</a>
+    <a href="http://mgcrea.github.io/angular-strap" target="_blank">Angular Strap</a>.
   </p>
 
   <h3>Installation</h3>
@@ -24,7 +24,61 @@ $ npm install ngstrap-modals
 $ bower install ngstrap-modals</pre>
 
   <h3>Usage</h3>
+  <p>Add <code>ngstrapModals</code> as a dependency in your app.</p>
+  <pre>
+angular.module('myapp', ['ngstrapModals']);</pre>
+  <p>Use <code>ngstrapModals</code> service in your app controllers to create modals.</p>
+  <pre>
+angular
+  .module('myapp')
+  .controller('myController', ['ngstrapModals', function(ngstrapModals) {
+     // ... your code here ... //
 
+     ngstrapModals.alert(options);
+     ngstrapModals.confirm(options);
+     ngstrapModals.prompt(options);
+   }]);
+  </pre>
+
+  <h3>Demo</h3>
+  <h4>Alert</h4>
+  <p>
+    An alert dialog is used to display an important information to the user. Use this
+    dialog just to show something, but don't expect user's response out of it. Click
+    the below button to open an alert dialog.
+  </p>
+
+  <button class="btn btn-default" type="button" ng-click="openAlert()">Alert Dialog</button>
+  <button class="btn btn-default" type="button" ng-click="openCustomAlert()">With Custom Button Text</button>
+  <pre>
+ngstrapModals.alert({
+  heading: "Howdy!",
+  description: "Hello from an alert modal dialog. Please click on Ok to dismiss."
+});
+
+ngstrapModals.alert({
+  heading: "Hello again!",
+  description: "If you notice, my dismissal button text is &lt;strong&gt;Dismiss&lt;/strong&gt;.",
+  okButtonText: "Dismiss"
+});</pre>
+
+  <h4>Confirm</h4>
+  <p>
+    A confirm dialog confirms the user about an activity, for example, deleting a file. Use this
+    dialog to ask simple yes/no type queqstions to the user. You will get <code>true</code> as the
+    the response if user approves the action, <code>false</code> otherwise. Try it out below.
+  </p>
+  <button class="btn btn-default" type="button" ng-click="openConfirm()">Confirm Dialog</button>
+  <pre>
+ngstrapModals.confirm({
+  heading: "Did you like this plugin?"
+}).then(function (response) {
+  if (response) {
+    // Do something if user approves
+  } else {
+    // Do something else if user declines
+  }
+});</pre>
 </div>
 
 <script src="bower_components/angular/angular.min.js"></script>
