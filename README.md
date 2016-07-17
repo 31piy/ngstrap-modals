@@ -34,6 +34,8 @@ angular
 
 ### Demo
 
+Coming soon!
+
 ### Types
 
 #### Alert
@@ -89,51 +91,56 @@ You can pass options in a JavaScript object to customize a dialog.
       <th class="text-center">Confirm</th>
       <th class="text-center">Prompt</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <tr>
-      <td>`title`</td>
+      <td><code>title</code></td>
       <td>Specifies the title content of the modal</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
     </tr>
     <tr>
-      <td>`heading`</td>
+      <td><code>heading</code></td>
       <td>Specifies the heading of the modal</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
     </tr>
     <tr>
-      <td>`description`</td>
+      <td><code>description</code></td>
       <td>Specifies the description text of the modal</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
     </tr>
     <tr>
-      <td>`okButtonText`</td>
+      <td><code>okButtonText</code></td>
       <td>Specifies the text to show on the Ok button</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
     </tr>
     <tr>
-      <td>`cancelButtonText`</td>
+      <td><code>cancelButtonText</code></td>
       <td>Specifies the text to show on the Cancel button</td>
-      <td class="text-center">✔</td>
-      <td class="text-center">✔</td>
+      <td class="text-center"></td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
     </tr>
     <tr>
-      <td>`placeholder`</td>
+      <td><code>placeholder</code></td>
       <td>Specifies the text to show as a placeholder of the input</td>
-      <td class="text-center">✔</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td class="text-center">&#x2714;</td>
     </tr>
     <tr>
-      <td>`initValue`</td>
+      <td><code>initValue</code></td>
       <td>Specifies the initial value of the input</td>
-      <td class="text-center">✔</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td class="text-center">&#x2714;</td>
     </tr>
   </tbody>
 </table>
