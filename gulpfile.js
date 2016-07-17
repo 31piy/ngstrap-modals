@@ -38,17 +38,13 @@ gulp
   // Compile SASS, concatenate and minify CSS
   .task("sass", function () {
     return gulp.src(config.paths.sass + "/*.scss")
-      .pipe(sass({
-        includePaths: [
-          config.paths.sass,
-          config.paths.bower + "/bootstrap-sass/assets/stylesheets"
-        ]
-      }))
+      .pipe(sass())
       .pipe(concat(config.file.name + ".css"))
       .pipe(gulp.dest(config.paths.dest))
-      .pipe(rename(config.file.name + ".min.css"))
+      .pipe(rename({suffix: ".min"}))
       .pipe(uglify())
-      .pipe(gulp.dest(config.paths.dest));
+      .pipe(gulp.dest(config.paths.dest))
+      .pipe(connect.reload());
   })
 
   // Concatenate & minify JS
@@ -56,9 +52,10 @@ gulp
     return gulp.src(config.paths.js + "/*.js")
       .pipe(concat(config.file.name + ".js"))
       .pipe(gulp.dest(config.paths.dest))
-      .pipe(rename(config.file.name + ".min.js"))
+      .pipe(rename({suffix: ".min"}))
       .pipe(uglify())
-      .pipe(gulp.dest(config.paths.dest));
+      .pipe(gulp.dest(config.paths.dest))
+      .pipe(connect.reload());
   })
 
   // Watch Files For Changes
