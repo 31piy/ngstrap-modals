@@ -1,0 +1,34 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="$hide()">&times;</button>
+        <h4 class="modal-title" ng-bind-html="options.title"></h4>
+      </div>
+      <div class="modal-body">
+        <h4 ng-bind-html="options.heading"></h4>
+        <p ng-bind-html="options.subheading"></p>
+
+        <form name="promptDialogForm">
+          <div class="form-group"
+               ng-class="{ 'has-error' : promptDialogForm.promptInput.$invalid && promptDialogForm.promptInput.$dirty }">
+            <input type="text" class="form-control" required placeholder="{{options.placeholder}}" name="promptInput"
+                   id="promptInput" ng-required="true" ng-model="promptInput" focus-if>
+            <div class="help-block" ng-messages="promptDialogForm.promptInput.$error"
+                 ng-if="promptDialogForm.promptInput.$dirty">
+              <p ng-message="required">This is required.</p>
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="answer(false)">{{options.cancelButtonText}}</button>
+        <button type="button" class="btn btn-primary" ng-disabled="promptDialogForm.$invalid"
+                ng-click="answer(promptInput)">
+          {{options.okButtonText}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

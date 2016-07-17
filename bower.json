@@ -18,5 +18,7 @@
     "bootstrap": "^3.3.6",
     "angular-strap": "^2.3.9"
   },
-  "dependencies": {}
+  "dependencies": {
+    "angular-sanitize": "^1.5.7"
+  }
 }

@@ -11,68 +11,68 @@ var gulp = require("gulp"),
   del = require("del"),
   connect = require("gulp-connect"),
   open = require("gulp-open"),
-  os = require("os"),
+  templateCache = require("gulp-angular-templatecache"),
+  addStream = require("add-stream"),
+  htmlmin = require("gulp-htmlmin"),
 
 // Configuration options
   config = {
-    file: {
-      name: "ngstrap-modals"
-    },
     paths: {
       sass: "./resources/sass",
-      bower: "./bower_components",
       js: "./resources/js",
-      dest: "./dist"
-    },
-    url: "localhost:8080/index.html"
+      dest: "./dist",
+      templates: "./resources/templates"
+    }
   };
 
+function prepareTemplates() {
+  return gulp.src(config.paths.templates + "/**/*.html")
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
+    .pipe(templateCache({
+      module: "ngstrapModals"
+    }));
+}
+
 gulp
-// Lint Task
-  .task("lint", function () {
-    return gulp.src(config.paths.js + "/*.js")
-      .pipe(jshint())
-      .pipe(jshint.reporter("default"));
-  })
 
-  // Compile SASS, concatenate and minify CSS
   .task("sass", function () {
-    return gulp.src(config.paths.sass + "/*.scss")
+    return gulp.src(config.paths.sass + "/demo.scss")
       .pipe(sass())
-      .pipe(concat(config.file.name + ".css"))
-      .pipe(gulp.dest(config.paths.dest))
-      .pipe(rename({suffix: ".min"}))
-      .pipe(uglify())
       .pipe(gulp.dest(config.paths.dest))
       .pipe(connect.reload());
   })
 
-  // Concatenate & minify JS
-  .task("scripts", function () {
-    return gulp.src(config.paths.js + "/*.js")
-      .pipe(concat(config.file.name + ".js"))
-      .pipe(gulp.dest(config.paths.dest))
-      .pipe(rename({suffix: ".min"}))
-      .pipe(uglify())
-      .pipe(gulp.dest(config.paths.dest))
-      .pipe(connect.reload());
-  })
-
-  // Watch Files For Changes
   .task("watch", function () {
-    gulp.watch(config.paths.js + "/*.js", ["lint", "scripts"]);
-    gulp.watch(config.paths.sass + "/*.scss", ["sass"]);
+    gulp.watch(config.paths.js + "/**/*.js", ["scripts-demo"]);
+    gulp.watch(config.paths.templates + "/**/*.html", ["scripts-demo"]);
+    gulp.watch(config.paths.sass + "/**/*.scss", ["sass"]);
   })
 
-  // Cleans the assets
   .task("clean", function () {
     return del(config.paths.dest);
   })
 
-  // Builds the app
-  .task("build", ["clean", "lint", "sass", "scripts"])
+  .task("scripts-demo", function () {
+    return gulp.src(config.paths.js + "/**/*.js")
+      .pipe(addStream.obj(prepareTemplates()))
+      .pipe(concat("demo.js"))
+      .pipe(gulp.dest(config.paths.dest))
+      .pipe(connect.reload());
+  })
 
-  // Starts a local server
+  .task("build-dist", ["clean"], function () {
+    return gulp.src(config.paths.js + "/ngstrap-modals.js")
+      .pipe(addStream.obj(prepareTemplates()))
+      .pipe(concat("ngstrap-modals.min.js"))
+      .pipe(uglify())
+      .pipe(gulp.dest(config.paths.dest))
+      .pipe(connect.reload());
+  })
+
+  .task("build-demo", ["clean", "sass", "scripts-demo"])
+
   .task("connect", function () {
     connect.server({
       root: ".",
@@ -80,13 +80,8 @@ gulp
     });
   })
 
-  // Opens browser with the local server URL
   .task("open", function () {
-    return open(config.url);
+    return open("localhost:8080/index.html");
   })
 
-  // Default Task
-  .task("default", ["build", "watch"])
-
-  // Serves the demo site through local server
-  .task("serve", ["build", "connect", "watch", "open"]);
+  .task("serve", ["build-demo", "connect", "watch", "open"]);
