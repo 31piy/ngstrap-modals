@@ -36,4 +36,21 @@ angular.module("demo", ["ngstrapModals"])
       });
     };
 
+    $scope.openPrompt = function () {
+      ngstrapModals.prompt({
+        heading: "Hey visitor, what's your name?"
+      }).then(function(response) {
+        if (!response) {
+          ngstrapModals.alert({
+            description: "No problem! We'll call you visitor.",
+            okButtonText: "Okay"
+          });
+        } else {
+          ngstrapModals.alert({
+            description: "Hello " + response + "! Nice meeting you.",
+            okButtonText: "Okay"
+          });
+        }
+      });
+    };
   }]);

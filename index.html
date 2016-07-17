@@ -44,8 +44,8 @@ angular
   <h4>Alert</h4>
   <p>
     An alert dialog is used to display an important information to the user. Use this
-    dialog just to show something, but don't expect user's response out of it. Click
-    the below button to open an alert dialog.
+    dialog just to show something, but don't expect user's response out of it. Try it
+    out below.
   </p>
 
   <button class="btn btn-default" type="button" ng-click="openAlert()">Alert Dialog</button>
@@ -77,6 +77,24 @@ ngstrapModals.confirm({
     // Do something if user approves
   } else {
     // Do something else if user declines
+  }
+});</pre>
+
+  <h4>Prompt</h4>
+  <p>
+    A prompt dialog offers a user to type something in the given input box. Use this dialog when
+    you want to get some custom inputs from the user. You will get whatever the user types in the
+    text box as a response, or <code>false</code> if user clicks the cancel button. Try it out below.
+  </p>
+  <button class="btn btn-default" type="button" ng-click="openPrompt()">Prompt Dialog</button>
+  <pre>
+ngstrapModals.prompt({
+  heading: "Hey visitor, what's your name?"
+}).then(function(response) {
+  if (!response) {
+    // Do something if user cancels
+  } else {
+    // Do something if user enters something
   }
 });</pre>
 </div>
