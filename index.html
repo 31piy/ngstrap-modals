@@ -1,19 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="demo">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AngularStrap Modals</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="dist/ngstrap-modals.css">
+  <link rel="stylesheet" href="dist/demo.css">
 </head>
 <body>
 
-<div class="content">
-  
+<div class="container" ng-controller="demoCtrl">
+
+  <h1>ngstrap-modals</h1>
+  <p>An angular service to generate common modal dialogs using
+    <a href="http://mgcrea.github.io/angular-strap" target="_blank">Angular Strap.</a>
+  </p>
+
+  <h3>Installation</h3>
+  <p>Install using <code>npm</code> or <code>bower</code>.</p>
+    <pre>
+$ npm install ngstrap-modals
+$ bower install ngstrap-modals</pre>
+
+  <h3>Usage</h3>
+
 </div>
 
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
-<script src="dist/ngstrap-modals.js"></script>
+<script src="dist/demo.js"></script>
 </body>
 </html>
