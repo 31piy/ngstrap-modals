@@ -1,0 +1,22 @@
+{
+  "name": "ngstrap-modals",
+  "description": "A utility service to create common modals using [angular-strap](https://github.com/mgcrea/angular-strap) directives.",
+  "main": "dist/ngstrap-modals.min.js",
+  "authors": [
+    "Piyush Sonagara"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/31piy/ngstrap-modals",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "angular-strap": "^2.3.9"
+  },
+  "dependencies": {}
+}
