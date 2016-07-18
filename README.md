@@ -34,7 +34,7 @@ angular
 
 ### Demo
 
-Coming soon!
+Check out the examples [here](https://31piy.github.io/ngstrap-modals).
 
 ### Types
 
