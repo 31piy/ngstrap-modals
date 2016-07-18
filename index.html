@@ -1,1 +1,187 @@
-My Page
+<!doctype html>
+<html lang="en" ng-app="demo">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ngstrap-modals</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="dist/demo.css">
+</head>
+<body>
+
+<div class="container" ng-controller="demoCtrl">
+
+  <h1>ngstrap-modals</h1>
+  <div>
+    <a href="https://github.com/31piy/ngstrap-modals/network">
+      <img src="https://img.shields.io/github/forks/31piy/ngstrap-modals.svg" alt="forks">
+    </a>
+    <a href="https://raw.githubusercontent.com/31piy/ngstrap-modals/master/LICENSE">
+      <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license">
+    </a>
+  </div>
+
+  <br>
+  
+  <p>An angular service to generate common modal dialogs using
+    <a href="http://mgcrea.github.io/angular-strap" target="_blank">Angular Strap</a>.
+  </p>
+
+  <h3>Installation</h3>
+  <p>Install using <code>npm</code> or <code>bower</code>.</p>
+    <pre>
+$ npm install ngstrap-modals
+$ bower install ngstrap-modals</pre>
+
+  <h3>Usage</h3>
+  <p>Add <code>ngstrapModals</code> as a dependency in your app.</p>
+  <pre>
+angular.module('myapp', ['ngstrapModals']);</pre>
+  <p>Use <code>ngstrapModals</code> service in your app controllers to create modals.</p>
+  <pre>
+angular
+  .module('myapp')
+  .controller('myController', ['ngstrapModals', function(ngstrapModals) {
+     // ... your code here ... //
+
+     ngstrapModals.alert(options);
+     ngstrapModals.confirm(options);
+     ngstrapModals.prompt(options);
+   }]);
+  </pre>
+
+  <h3>Demo</h3>
+  <h4>Alert</h4>
+  <p>
+    An alert dialog is used to display an important information to the user. Use this
+    dialog just to show something, but don't expect user's response out of it. Try it
+    out below.
+  </p>
+
+  <button class="btn btn-default" type="button" ng-click="openAlert()">Alert Dialog</button>
+  <button class="btn btn-default" type="button" ng-click="openCustomAlert()">With Custom Button Text</button>
+  <pre>
+ngstrapModals.alert({
+  heading: "Howdy!",
+  description: "Hello from an alert modal dialog. Please click on Ok to dismiss."
+});
+
+ngstrapModals.alert({
+  heading: "Hello again!",
+  description: "If you notice, my dismissal button text is &lt;strong&gt;Dismiss&lt;/strong&gt;.",
+  okButtonText: "Dismiss"
+});</pre>
+
+  <h4>Confirm</h4>
+  <p>
+    A confirm dialog confirms the user about an activity, for example, deleting a file. Use this
+    dialog to ask simple yes/no type queqstions to the user. You will get <code>true</code> as the
+    the response if user approves the action, <code>false</code> otherwise. Try it out below.
+  </p>
+  <button class="btn btn-default" type="button" ng-click="openConfirm()">Confirm Dialog</button>
+  <pre>
+ngstrapModals.confirm({
+  heading: "Did you like this plugin?"
+}).then(function (response) {
+  if (response) {
+    // Do something if user approves
+  } else {
+    // Do something else if user declines
+  }
+});</pre>
+
+  <h4>Prompt</h4>
+  <p>
+    A prompt dialog offers a user to type something in the given input box. Use this dialog when
+    you want to get some custom inputs from the user. You will get whatever the user types in the
+    text box as a response, or <code>false</code> if user clicks the cancel button. Try it out below.
+  </p>
+  <button class="btn btn-default" type="button" ng-click="openPrompt()">Prompt Dialog</button>
+  <pre>
+ngstrapModals.prompt({
+  heading: "Hey visitor, what's your name?"
+}).then(function(response) {
+  if (!response) {
+    // Do something if user cancels
+  } else {
+    // Do something if user enters something
+  }
+});</pre>
+
+  <h3>Customization</h3>
+  <p>You can pass options in a JavaScript object to customize a dialog.</p>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th class="text-center" rowspan="2">Option</th>
+      <th class="text-center" rowspan="2">Description</th>
+      <th class="text-center" colspan="3">Available in</th>
+    </tr>
+    <tr>
+      <th class="text-center">Alert</th>
+      <th class="text-center">Confirm</th>
+      <th class="text-center">Prompt</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><code>title</code></td>
+      <td>Specifies the title content of the modal</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+    </tr>
+    <tr>
+      <td><code>heading</code></td>
+      <td>Specifies the heading of the modal</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+    </tr>
+    <tr>
+      <td><code>description</code></td>
+      <td>Specifies the description text of the modal</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+    </tr>
+    <tr>
+      <td><code>okButtonText</code></td>
+      <td>Specifies the text to show on the Ok button</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+    </tr>
+    <tr>
+      <td><code>cancelButtonText</code></td>
+      <td>Specifies the text to show on the Cancel button</td>
+      <td class="text-center"></td>
+      <td class="text-center">&#x2714;</td>
+      <td class="text-center">&#x2714;</td>
+    </tr>
+    <tr>
+      <td><code>placeholder</code></td>
+      <td>Specifies the text to show as a placeholder of the input</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td class="text-center">&#x2714;</td>
+    </tr>
+    <tr>
+      <td><code>initValue</code></td>
+      <td>Specifies the initial value of the input</td>
+      <td class="text-center"></td>
+      <td class="text-center"></td>
+      <td class="text-center">&#x2714;</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+<script src="dist/demo.js"></script>
+</body>
+</html>
