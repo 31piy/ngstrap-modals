@@ -4,10 +4,9 @@ An angular service to generate common modal dialogs using [Angular Strap](http:/
 
 ### Installation
 
-Install using `npm` or `bower`.
+Install using `bower`.
 
 ```shell
-$ npm install ngstrap-modals
 $ bower install ngstrap-modals
 ```
 
