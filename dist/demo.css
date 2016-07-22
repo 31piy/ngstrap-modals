@@ -3,3 +3,6 @@ body {
 
 .modal-backdrop {
   opacity: .5; }
+
+pre {
+  margin-top: 10px; }
